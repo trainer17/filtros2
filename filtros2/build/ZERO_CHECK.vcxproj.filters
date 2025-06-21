@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\CMakeFiles\716e595fe70ae64d1e07431ad8b70328\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E919CB9C-B46A-3E7B-A37B-1E8F7ACB5B92}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

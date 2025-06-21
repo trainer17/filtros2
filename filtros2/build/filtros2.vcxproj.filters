@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\processor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\entry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\public.sdk\source\main\dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\version.h">
+      <Filter>Source Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\cids.h">
+      <Filter>Source Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\processor.h">
+      <Filter>Source Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\controller.h">
+      <Filter>Source Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="circularBuff.hpp">
+      <Filter>Source Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\filtrosSOS.hpp">
+      <Filter>Source Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\filtros.hpp">
+      <Filter>Source Files\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\resource\AA607D5B5E30574681352EFD76E64261_snapshot.png">
+      <Filter>Contents\Resources\Snapshots</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\resource\AA607D5B5E30574681352EFD76E64261_snapshot_2.0x.png">
+      <Filter>Contents\Resources\Snapshots</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\resource\win32resource.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{5FA36814-416E-3809-B81D-F7A0F328CE9D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Resources">
+      <UniqueIdentifier>{58ABFDE7-E05C-39C6-9EEB-CDD8AAD32410}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Resources\Snapshots">
+      <UniqueIdentifier>{9329041E-4E01-32CD-AF73-C8B6825878C8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{042C38B7-7D02-335E-8322-E8E5FBDC0769}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Header Files">
+      <UniqueIdentifier>{4BEB3699-8295-31A5-B9A1-2A484E4EA694}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

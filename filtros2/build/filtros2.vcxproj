@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C5730FAA-4005-37FF-B324-F7D2B70A557A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>filtros2</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\VST3\Debug\filtros2.vst3\Contents\x86_64-win\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">filtros2.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">filtros2</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.vst3</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <LocalDebuggerCommand Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProgramW6432)/Steinberg/VST3PluginTestHost/VST3PluginTestHost.exe</LocalDebuggerCommand>
+    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">--pluginfolder "$(OutDir)/"</LocalDebuggerCommandArguments>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\VST3\Release\filtros2.vst3\Contents\x86_64-win\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">filtros2.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">filtros2</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.vst3</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <LocalDebuggerCommand Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProgramW6432)/Steinberg/VST3PluginTestHost/VST3PluginTestHost.exe</LocalDebuggerCommand>
+    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Release|x64'">--pluginfolder "$(OutDir)/"</LocalDebuggerCommandArguments>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\public.sdk\..;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\base\..;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\pluginterfaces\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>6031;6308;6330;6385;6386;28125;28251;4221</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode>
+      </SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;SMTG_RENAME_ASSERT=1;DEVELOPMENT=1;_UNICODE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="Debug";filtros2_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;SMTG_RENAME_ASSERT=1;DEVELOPMENT=1;_UNICODE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Debug\";filtros2_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\public.sdk\..;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\base\..;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\pluginterfaces\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\public.sdk\..;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\base\..;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\pluginterfaces\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Debug/filtros2.vst3/Contents/Resources
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>[SMTG] Copy PlugIn.ico and desktop.ini and change their attributes.			</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/VST_SDK/vst3sdk/cmake/modules/../templates/VST_Logo_Steinberg.ico C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Debug/filtros2.vst3/PlugIn.ico
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/VST_SDK/vst3sdk/cmake/modules/../templates/desktop.ini.in C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Debug/filtros2.vst3/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Debug/filtros2.vst3/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Debug/filtros2.vst3/PlugIn.ico
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Debug/filtros2.vst3
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+cd C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\bin
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\bin\Debug\moduleinfotool.exe -create -version 1.0.0.0 -path C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Debug/filtros2.vst3 -output C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Debug/filtros2.vst3/Contents/Resources/moduleinfo.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+cd C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\bin
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Validator started...
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\bin\Debug\validator.exe C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Debug/filtros2.vst3 
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Validator finished.
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Delete previous link...
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -rf C:/Users/roman/AppData/Local/Programs/Common/VST3/filtros2.vst3
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Creation of the new link...
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E create_symlink C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Debug/filtros2.vst3  C:/Users/roman/AppData/Local/Programs/Common/VST3/filtros2.vst3
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Finished.
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\Debug\sdk.lib;lib\Debug\sdk_common.lib;lib\Debug\base.lib;lib\Debug\pluginterfaces.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/lib/Debug/filtros2.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/WIN_PDB64/Debug/filtros2.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\public.sdk\..;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\base\..;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\pluginterfaces\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>6031;6308;6330;6385;6386;28125;28251;4221</DisableSpecificWarnings>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>true</OmitFramePointers>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <SupportJustMyCode>
+      </SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SMTG_RENAME_ASSERT=1;RELEASE=1;_UNICODE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="Release";filtros2_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SMTG_RENAME_ASSERT=1;RELEASE=1;_UNICODE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Release\";filtros2_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\public.sdk\..;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\base\..;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\pluginterfaces\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\public.sdk\..;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\base\..;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\pluginterfaces\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Release/filtros2.vst3/Contents/Resources
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>[SMTG] Copy PlugIn.ico and desktop.ini and change their attributes.			</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/VST_SDK/vst3sdk/cmake/modules/../templates/VST_Logo_Steinberg.ico C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Release/filtros2.vst3/PlugIn.ico
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/VST_SDK/vst3sdk/cmake/modules/../templates/desktop.ini.in C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Release/filtros2.vst3/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Release/filtros2.vst3/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Release/filtros2.vst3/PlugIn.ico
+if %errorlevel% neq 0 goto :cmEnd
+attrib +s C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Release/filtros2.vst3
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+cd C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\bin
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\bin\Release\moduleinfotool.exe -create -version 1.0.0.0 -path C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Release/filtros2.vst3 -output C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Release/filtros2.vst3/Contents/Resources/moduleinfo.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+cd C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\bin
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Validator started...
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\bin\Release\validator.exe  C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Release/filtros2.vst3
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Validator finished.
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Delete previous link...
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -rf C:/Users/roman/AppData/Local/Programs/Common/VST3/filtros2.vst3
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Creation of the new link...
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E create_symlink  C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Release/filtros2.vst3 C:/Users/roman/AppData/Local/Programs/Common/VST3/filtros2.vst3
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo [SMTG] Finished.
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\Release\sdk.lib;lib\Release\sdk_common.lib;lib\Release\base.lib;lib\Release\pluginterfaces.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/lib/Release/filtros2.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/WIN_PDB64/Release/filtros2.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\resource\AA607D5B5E30574681352EFD76E64261_snapshot.png">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating VST3/Debug/$(TargetFileName)/Contents/Resources/Snapshots/AA607D5B5E30574681352EFD76E64261_snapshot.png</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/resource/AA607D5B5E30574681352EFD76E64261_snapshot.png C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Debug/$(TargetFileName)/Contents/Resources/Snapshots/AA607D5B5E30574681352EFD76E64261_snapshot.png
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/resource/AA607D5B5E30574681352EFD76E64261_snapshot.png to C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Debug/$(TargetFileName)/Contents/Resources/Snapshots/AA607D5B5E30574681352EFD76E64261_snapshot.png"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\VST3\Debug\$(TargetFileName)\Contents\Resources\Snapshots\AA607D5B5E30574681352EFD76E64261_snapshot.png</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating VST3/Release/$(TargetFileName)/Contents/Resources/Snapshots/AA607D5B5E30574681352EFD76E64261_snapshot.png</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/resource/AA607D5B5E30574681352EFD76E64261_snapshot.png C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Release/$(TargetFileName)/Contents/Resources/Snapshots/AA607D5B5E30574681352EFD76E64261_snapshot.png
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/resource/AA607D5B5E30574681352EFD76E64261_snapshot.png to C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Release/$(TargetFileName)/Contents/Resources/Snapshots/AA607D5B5E30574681352EFD76E64261_snapshot.png"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\VST3\Release\$(TargetFileName)\Contents\Resources\Snapshots\AA607D5B5E30574681352EFD76E64261_snapshot.png</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\resource\AA607D5B5E30574681352EFD76E64261_snapshot_2.0x.png">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating VST3/Debug/$(TargetFileName)/Contents/Resources/Snapshots/AA607D5B5E30574681352EFD76E64261_snapshot_2.0x.png</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/resource/AA607D5B5E30574681352EFD76E64261_snapshot_2.0x.png C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Debug/$(TargetFileName)/Contents/Resources/Snapshots/AA607D5B5E30574681352EFD76E64261_snapshot_2.0x.png
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/resource/AA607D5B5E30574681352EFD76E64261_snapshot_2.0x.png to C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Debug/$(TargetFileName)/Contents/Resources/Snapshots/AA607D5B5E30574681352EFD76E64261_snapshot_2.0x.png"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\VST3\Debug\$(TargetFileName)\Contents\Resources\Snapshots\AA607D5B5E30574681352EFD76E64261_snapshot_2.0x.png</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating VST3/Release/$(TargetFileName)/Contents/Resources/Snapshots/AA607D5B5E30574681352EFD76E64261_snapshot_2.0x.png</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/resource/AA607D5B5E30574681352EFD76E64261_snapshot_2.0x.png C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Release/$(TargetFileName)/Contents/Resources/Snapshots/AA607D5B5E30574681352EFD76E64261_snapshot_2.0x.png
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "[SMTG] Copied C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/resource/AA607D5B5E30574681352EFD76E64261_snapshot_2.0x.png to C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/VST3/Release/$(TargetFileName)/Contents/Resources/Snapshots/AA607D5B5E30574681352EFD76E64261_snapshot_2.0x.png"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\VST3\Release\$(TargetFileName)\Contents\Resources\Snapshots\AA607D5B5E30574681352EFD76E64261_snapshot_2.0x.png</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2 -BC:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build --check-stamp-file C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCCompilerABI.c;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineCCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineCompilerSupport.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeTestCCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\CrayClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\GNU-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\LCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\OrangeC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\TIClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Tasking-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeDetermineLinkerId.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeInspectCLinker.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeInspectCXXLinker.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\WindowsPaths.cmake;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\cmake\templates\projectversion.h.in;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\CMakeFiles\4.0.1\CMakeCCompiler.cmake;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\CMakeFiles\4.0.1\CMakeCXXCompiler.cmake;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\CMakeFiles\4.0.1\CMakeRCCompiler.cmake;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\CMakeFiles\4.0.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2 -BC:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build --check-stamp-file C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCCompilerABI.c;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineCCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineCompilerSupport.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeTestCCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\CrayClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\GNU-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\LCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\OrangeC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\TIClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Tasking-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeDetermineLinkerId.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeInspectCLinker.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeInspectCXXLinker.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\WindowsPaths.cmake;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\cmake\templates\projectversion.h.in;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\CMakeFiles\4.0.1\CMakeCCompiler.cmake;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\CMakeFiles\4.0.1\CMakeCXXCompiler.cmake;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\CMakeFiles\4.0.1\CMakeRCCompiler.cmake;C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\CMakeFiles\4.0.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\filtros.hpp" />
+    <ClInclude Include="..\source\filtrosSOS.hpp" />
+    <ClInclude Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\version.h" />
+    <ClInclude Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\cids.h" />
+    <ClInclude Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\processor.h" />
+    <ClCompile Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\processor.cpp" />
+    <ClInclude Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\controller.h" />
+    <ClCompile Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\controller.cpp" />
+    <ClCompile Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\entry.cpp" />
+    <ClCompile Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\public.sdk\source\main\dllmain.cpp" />
+    <ClInclude Include="circularBuff.hpp" />
+    <ResourceCompile Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\resource\win32resource.rc" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\ZERO_CHECK.vcxproj">
+      <Project>{1FC9E997-A540-36AF-8936-33BD7E6242A2}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\vst3sdk\base\base.vcxproj">
+      <Project>{7FD7659B-B974-3A8E-B58B-4B4FA6C0E86A}</Project>
+      <Name>base</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\vst3sdk\public.sdk\samples\vst-utilities\moduleinfotool\moduleinfotool.vcxproj">
+      <Project>{75BCC036-09A7-343E-929E-0F154FD111CE}</Project>
+      <Name>moduleinfotool</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\vst3sdk\pluginterfaces\pluginterfaces.vcxproj">
+      <Project>{FDB3EFF9-E69E-3F47-9133-3DF2C3B7EBDF}</Project>
+      <Name>pluginterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\vst3sdk\public.sdk\sdk.vcxproj">
+      <Project>{2EE48AD5-8AF9-373D-B7F1-661D840F815F}</Project>
+      <Name>sdk</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\vst3sdk\public.sdk\sdk_common.vcxproj">
+      <Project>{E7FCE87A-B5CB-3143-8C75-7EE6CDAABA8E}</Project>
+      <Name>sdk_common</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\build\vst3sdk\public.sdk\samples\vst-hosting\validator\validator.vcxproj">
+      <Project>{597DA76A-B9FB-386D-97EE-E6BF745E930E}</Project>
+      <Name>validator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

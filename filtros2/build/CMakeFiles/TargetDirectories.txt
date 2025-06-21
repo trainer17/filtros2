@@ -1,0 +1,16 @@
+C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/CMakeFiles/filtros2.dir
+C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/vst3sdk/CMakeFiles/cmake_modules.dir
+C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/vst3sdk/CMakeFiles/cmake_VST_modules.dir
+C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/vst3sdk/CMakeFiles/ALL_BUILD.dir
+C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/vst3sdk/pluginterfaces/CMakeFiles/pluginterfaces.dir
+C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/vst3sdk/pluginterfaces/CMakeFiles/ALL_BUILD.dir
+C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/vst3sdk/base/CMakeFiles/base.dir
+C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/vst3sdk/base/CMakeFiles/ALL_BUILD.dir
+C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/vst3sdk/public.sdk/CMakeFiles/sdk_common.dir
+C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/vst3sdk/public.sdk/CMakeFiles/sdk.dir
+C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/vst3sdk/public.sdk/CMakeFiles/sdk_hosting.dir
+C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/vst3sdk/public.sdk/CMakeFiles/ALL_BUILD.dir
+C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir
+C:/Users/roman/OneDrive/Escritorio/Audio_Code/VST3CODE/filtros2/filtros2/build/vst3sdk/public.sdk/samples/vst-utilities/moduleinfotool/CMakeFiles/moduleinfotool.dir

@@ -68,17 +68,20 @@ public:
 protected:
 
 	//Parametros fijos de implementacion
-	const int bufsize = 48000; //tamaño de los buffers internos para procesar el audio.
 	const int n_channs = 2; //Plugin stereo
 	const int ordenMax = 250; //Maximo orden para los filtros . Si cambio aca, tengo que cambiar el controller .cpp tambien, donde agrego este parametro
-	
+	const int bufsize = 4096; //tamaño de los buffers internos para procesar el audio. Solo necesito "ordenMax", pero como el Daw me puede pedir con bloques de esa cantidad de samples...
+
 	
 	//Parametros variables.
 	//todo no arrancan con los valores de los sliders, sino los que defino acá
 	int tipoFiltroId = TiposFiltro::Butterworth ; //Tipo de filtro actual. Ver cids.h
 
-	Steinberg::Vst::ParamValue fc = 500; //frec de corte
-	Steinberg::Vst::ParamValue bw = 100; //Bandwith del filtro en HZ. Usado cuando aplica
+	Steinberg::Vst::ParamValue fc = 500.; //frec de corte
+	Steinberg::Vst::ParamValue bw = 100.; //Bandwith del filtro en HZ. Usado cuando aplica
+	Steinberg::Vst::ParamValue bw_slider = 0.3 ; //Valor del slider de este param
+	//Steinberg::Vst::ParamValue Gain_dB = 0.;  //Gain del Parametric eq, shelving eq en dB. No lo uso
+	Steinberg::Vst::ParamValue Gain = 1.; //Gain lineal de parametric y shelving eqs
 
 	int orden = 1; //Orden del filtro. Usado cuando aplica
 

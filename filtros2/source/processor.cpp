@@ -4,6 +4,7 @@
 
 #include "processor.h"
 #include "cids.h"
+#include "funciones.h"
 
 #include "base/source/fstreamer.h"
 #include "pluginterfaces/vst/ivstparameterchanges.h" // Para parametros en el daw
@@ -60,9 +61,8 @@ namespace MyCompanyName {
 		}
 
 		/* Inicializo el filtro */
-
-		filt.as = std::vector<float>({ 1, 0 }); //recursivos
-		filt.bs = std::vector<float>({ 0.5, 0 }); //lineales
+		//filt.as = std::vector<float>({ 1, 0 }); //recursivos
+		//filt.bs = std::vector<float>({ 0.5, 0 }); //lineales
 
 		return kResultOk;
 	}
@@ -144,6 +144,7 @@ namespace MyCompanyName {
 				Vst::Sample32* channin = data.inputs[bus].channelBuffers32[chann];
 				Vst::Sample32* channout = data.outputs[bus].channelBuffers32[chann];
 
+				if (!channin || !channout) return; //Si los punteros son NULL no hago nada
 
 				processMio(data.numSamples, chann, channin, channout); 
 			}
@@ -165,6 +166,7 @@ namespace MyCompanyName {
 			channin[0] = 1.;
 		}
 		*/
+
 
 
 		// load input samples en memoria
@@ -283,27 +285,21 @@ namespace MyCompanyName {
 					{
 					case Parametros::kParamFc:
 						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue)
-
-							fc = (value*0.9999)*sr /2. ; //Paso a 0Hz - Nyquist Hz
+						{
+							fc = normalized_to_log_freq(value); //Paso de 0-1 a  20hz - 20khz de manera exponencial
+							// Nota, si cambio acá como mapeo fc, tambien cambiar como lo muestro en controller.cpp
+							if (fc > sr / 2) fc = sr / 2 - 10;
+							//fc = (value*0.9999)*sr /2. ; //Paso a 0Hz - Nyquist Hz
 							//gain = pow(10., 2 * (value - 0.5));
-							break;
 
-					case Parametros::kParamb0:
-						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue)
-							filt.bs[0] = value;
+							bw = normalized_octs_to_hz_bw(bw_slider, fc, sr);
+						}
 						break;
-
-
-					case Parametros::kParama1:
-						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue)
-							filt.as[1] = value;
-						break;
-
 
 					case Parametros::kParamOrden:
 						//https://steinbergmedia.github.io/vst3_dev_portal/pages/Technical+Documentation/Parameters+Automation/Index.html
 						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue)
-							orden = std::min((double) ordenMax+1, value * (ordenMax + 1)); //paso del valor continuo 0-1 al discreto 1-OrdenMax
+							orden = normalized_to_Orden(value, ordenMax); //paso del valor continuo 0-1 al discreto 1-OrdenMax
 						break;
 
 
@@ -316,17 +312,29 @@ namespace MyCompanyName {
 
 					case Parametros::kParamBW:
 						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue)
-							bw = value*sr / 2.; //paso del valor continuo 0-1 al Nyquist (HZ)
-							//Clamp bandwith para que no se pase de Nyquist ni a frecuencias negativas
-							if (fc + bw > sr / 2.) bw = sr / 2 - fc - 2;
-							if (fc - bw < 0) bw = fc - 2;
+						{
+							//bw = normalized_to_log_freq(value);
+							//bw = value*sr / 2.; //paso del valor continuo 0-1 al Nyquist (HZ)
 
+							//El parametro 0-1 controla una cantidad de intervalos segun fc. de 0 a 3 octavas
+							// Acá lo convierto a su valor en Hz
+							// Que sea  control en octavas es una heuristica aproximada... tendria que ser asimetrica en ese caso. Aca no lo hago asi
+							bw = normalized_octs_to_hz_bw(value, fc, sr);
+							bw_slider = value;
+						}
+						break;
+
+					case Parametros::kParamGain:
+						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue) {
+							float Gain_dB = normalized_to_dB(value);
+							Gain = db_to_linear(Gain_dB);
+						}
 						break;
 
 					}
 
 				}
-				if (numParamsChanged > 0) filt.calcularCoeffs(tipoFiltroId, fc, sr, bw, orden);
+				if (numParamsChanged > 0) filt.calcularCoeffs(tipoFiltroId, fc, sr, bw, orden, Gain);
 			}
 
 

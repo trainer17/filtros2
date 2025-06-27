@@ -427,8 +427,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="funciones.cpp" />
     <ClInclude Include="..\source\filtros.hpp" />
-    <ClInclude Include="..\source\filtrosSOS.hpp" />
     <ClInclude Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\version.h" />
     <ClInclude Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\cids.h" />
     <ClInclude Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\processor.h" />
@@ -438,6 +438,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\entry.cpp" />
     <ClCompile Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\public.sdk\source\main\dllmain.cpp" />
     <ClInclude Include="circularBuff.hpp" />
+    <ClInclude Include="funciones.h" />
     <ResourceCompile Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\resource\win32resource.rc" />
   </ItemGroup>
   <ItemGroup />

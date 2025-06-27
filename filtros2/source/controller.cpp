@@ -5,7 +5,15 @@
 #include "controller.h"
 #include "cids.h"
 #include "base/source/fstreamer.h"
+#include "funciones.h"
 
+//Para convertir cualquier string a utf16 (el formato que usa steinberg)
+/*
+#include <codecvt>
+#include <cuchar>
+#include <string>
+#include <locale>
+*/
 
 using namespace Steinberg;
 
@@ -29,15 +37,18 @@ tresult PLUGIN_API filtros2Controller::initialize (FUnknown* context)
 	}
 
 	// Here you could register some parameters
-	// Here you could register some parameters
 	parameters.addParameter(STR16("Fc"), STR16("Hz"), 0, .5, Vst::ParameterInfo::kCanAutomate, Parametros::kParamFc, 0);
 	//A VST 3 parameter is always normalized (its value is a floating point value between [0.0, 1.0]), here its default value is set to 0.5.
-
-	parameters.addParameter(STR16("b0"), STR16(""), 0, .5, Vst::ParameterInfo::kCanAutomate, Parametros::kParamb0, 0);
-	parameters.addParameter(STR16("a1"), STR16(""), 0, .5, Vst::ParameterInfo::kCanAutomate, Parametros::kParama1, 0);
 	parameters.addParameter(STR16("Orden"), STR16(""), 250, 0.01, Vst::ParameterInfo::kCanAutomate, Parametros::kParamOrden, 0);
 	parameters.addParameter(STR16("Tipo"), STR16(""), NTiposFiltro, 0, Vst::ParameterInfo::kCanAutomate, Parametros::kParamTipo, 0);
-	parameters.addParameter(STR16("BW"), STR16("Hz"), 0, 0.1, Vst::ParameterInfo::kCanAutomate, Parametros::kParamBW, 0);
+	parameters.addParameter(STR16("BW"), STR16("Octs"), 0, 0.1, Vst::ParameterInfo::kCanAutomate, Parametros::kParamBW, 0);
+	parameters.addParameter(STR16("Gain"), STR16("dB"), 0, 0.1, Vst::ParameterInfo::kCanAutomate, Parametros::kParamGain, 0);
+
+	//Tchar es UTF16 char
+	// u"hola" codifica en utf-16
+	Vst::Parameter* param = new Vst::RangeParameter( u"Attack", 6, (Vst::TChar *) u"unit", 20., 20000., 100., 1000, Vst::ParameterInfo::kCanAutomate);
+	param->setPrecision(4); // fractional sig digits|
+	parameters.addParameter(param);
 
 
 	return result;
@@ -152,8 +163,23 @@ void stringToString128(char* string, Steinberg::Vst::String128 out)
 //String que muestra el valor del parametro
 tresult PLUGIN_API filtros2Controller::getParamStringByValue(Vst::ParamID tag, Vst::ParamValue valueNormalized, Vst::String128 string) {
 	
+
+	Vst::Parameter* parameter = getParameterObject(tag);
+
+	/*
+	if (parameter)
+	{
+		parameter->toString(valueNormalized, string);
+		return kResultTrue;
+	}
+	*/
+
+	//Donde voy a guardar el string comun, en ascii, del valor que quiero mostrar, antes de pasarlo a utf-16 (formato de steinberg)
+	char string_val[128];
+
+
 	if (tag == kParamFc) {
-		int displayValue = valueNormalized * 44100 / 2.; //Igualo al valor interno que tomo. TODO HACER BIEN
+		int displayValue = normalized_to_log_freq(valueNormalized); //Igualo al valor interno que tomo. TODO HACER BIEN
 
 
 		sprintf((char*)string, "%d", displayValue);
@@ -163,7 +189,7 @@ tresult PLUGIN_API filtros2Controller::getParamStringByValue(Vst::ParamID tag, V
 	}
 
 	if (tag == kParamOrden) {
-		int displayValue = 1 + static_cast<int>(valueNormalized * 249.999);  // Ensures 1–250
+		int displayValue = normalized_to_Orden(valueNormalized, 250);
 
 
 		sprintf((char*) string, "%d", displayValue);
@@ -174,18 +200,21 @@ tresult PLUGIN_API filtros2Controller::getParamStringByValue(Vst::ParamID tag, V
 
 	if (tag == kParamTipo) {
 
-		int displayValue = static_cast<int>(valueNormalized * NTiposFiltro +0.5);  // Paso a 0-N
+		int displayValue = static_cast<int>(valueNormalized * NTiposFiltro +0.5);  // Paso a 0-N. 0.5 es para el redondeo
 
 		char* tipo;
-		//tipo = TiposFiltroNombres[displayValue]; no se por que eso no anda
-		if (displayValue == 0) tipo = "Butterworth";
-		if (displayValue == 1) tipo = "Chebyshev";
-		if (displayValue == 2) tipo = "Elliptic";
-		if (displayValue == 3) tipo = "Notch (order 2)";
-		if (displayValue == 4) tipo = "Resonator (order 2)";
-		if (displayValue == 5) tipo = "Parametric Eq (order 2)";
-		if (displayValue == 6) tipo = "-";
-	
+		if (displayValue == TiposFiltro::Butterworth) tipo = "Butterworth";
+		else if (displayValue == TiposFiltro::Chebyshev) tipo = "Chebyshev";
+		else if (displayValue == TiposFiltro::Elliptic) tipo = "Elliptic";
+		else if (displayValue == TiposFiltro::LP) tipo = "Low Pass";
+		else if (displayValue == TiposFiltro::HP) tipo = "High Pass";
+		else if (displayValue == TiposFiltro::Notch2) tipo = "Notch (order 2)";
+		else if (displayValue == TiposFiltro::Resonator2) tipo = "Resonator (order 2)";
+		else if (displayValue == TiposFiltro::AllPoleResonator2) tipo = "All Pole Resonator (order 2)";
+		else if (displayValue == TiposFiltro::ParametricEq2) tipo = "Parametric Eq (order 2)";
+		else if (displayValue == TiposFiltro::LowShelveEq2) tipo = "Low Shelving Eq (order 1)";
+		else if (displayValue == TiposFiltro::HighShelveEq2) tipo = "High Shelving Eq (order 1)";
+		else if (displayValue == TiposFiltro::NTiposFiltro) tipo = "-";
 
 		stringToString128(tipo, string);
 
@@ -193,11 +222,26 @@ tresult PLUGIN_API filtros2Controller::getParamStringByValue(Vst::ParamID tag, V
 	}
 
 	if (tag == kParamBW) {
-		int displayValue = valueNormalized* 44100 / 2.; //paso del valor continuo 0-1 al Nyquist 
+		//int displayValue = valueNormalized* 44100 / 2.; //paso del valor continuo 0-1 al Nyquist 
 		//TODO hacer bien
 
-		sprintf((char*)string, "%d", displayValue);
-		intToString128(displayValue, string);
+		float displayValue = 3 * valueNormalized; //cantidad de octavas
+
+		sprintf(string_val, "%1.2f", displayValue);
+		stringToString128(string_val, string);
+
+		return kResultOk;
+	}
+
+	if (tag == kParamGain) {
+
+		//std::string source;
+		//string = convert.from_bytes(source);
+
+
+		float displayValue = normalized_to_dB(valueNormalized);
+		sprintf(string_val, "%1.2f", displayValue);		
+		stringToString128(string_val, string);
 
 		return kResultOk;
 	}

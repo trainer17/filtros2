@@ -11,6 +11,7 @@ public:
 	~circularBuffer();
 	void copytoOut(float* to, int nsamps);
 	void copyfromIn(float* from, int nsamps);
+	void copyfromIn(circularBuffer<Sample>& from, int nsamps);
 
 
 	int bufsize;
@@ -86,11 +87,11 @@ Sample& circularBuffer<Sample>::next() {
 template<typename Sample>
 void circularBuffer<Sample>::copytoOut(float* to, int nsamps) {
 	int ns = nsamps;
-	while (--nsamps >= 0) {
+	while (--ns >= 0) {
 		(*to++) = (*this).next();
 	}
 
-	rewind(ns);
+	rewind(nsamps);
 	return;
 }
 
@@ -106,4 +107,19 @@ void circularBuffer<Sample>::copyfromIn(float* from, int nsamps) {
 
 	return;
 }
+
+template<typename Sample>
+void circularBuffer<Sample>::copyfromIn(circularBuffer<Sample>& from, int nsamps) {
+
+	int ns = nsamps;
+	while (--ns >= 0) {
+		(*this).next() = from.next();
+	}
+
+	rewind(nsamps);
+	from.rewind(nsamps);
+
+	return;
+}
+
 

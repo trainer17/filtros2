@@ -24,6 +24,7 @@ enum Parametros : Steinberg::Vst::ParamID
     kParama1, 
     kParamOrden,
     kParamBW,
+    kParamGain,
     kParamTipo
 
 };
@@ -33,11 +34,15 @@ enum TiposFiltro {
     Butterworth = 0,
     Chebyshev,
     Elliptic,
+    LP,
+    HP,
     Notch2,
     Resonator2,
+    AllPoleResonator2,
     ParametricEq2,
+    LowShelveEq2,
+    HighShelveEq2,
     NTiposFiltro
 
 };
-
 //std::vector<char*> TiposFiltroNombres({ "Butterworth", "Chebyshev", "Elliptic", "Notch (orden2)", "Resonator (orden2)", "Parametric Eq (orden 2)" });

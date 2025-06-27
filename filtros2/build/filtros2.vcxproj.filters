@@ -13,6 +13,9 @@
     <ClCompile Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\VST_SDK\vst3sdk\public.sdk\source\main\dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="funciones.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\roman\OneDrive\Escritorio\Audio_Code\VST3CODE\filtros2\filtros2\source\version.h">
@@ -30,10 +33,10 @@
     <ClInclude Include="circularBuff.hpp">
       <Filter>Source Files\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\filtrosSOS.hpp">
+    <ClInclude Include="..\source\filtros.hpp">
       <Filter>Source Files\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\filtros.hpp">
+    <ClInclude Include="funciones.h">
       <Filter>Source Files\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

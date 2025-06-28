@@ -21,6 +21,7 @@ namespace MyCompanyName {
 	// filtros2Processor
 	//------------------------------------------------------------------------
 	filtros2Processor::filtros2Processor()
+		: filt(bufsize, n_channs)
 	{
 		//--- set the wanted controller for our processor
 		setControllerClass(kfiltros2ControllerUID);
@@ -57,7 +58,7 @@ namespace MyCompanyName {
 
 		for (int chann = 0; chann < n_channs; chann++) {
 			inputs_buff.emplace_back(bufsize);
-			outputs_buff.emplace_back(bufsize);
+			//outputs_buff.emplace_back(bufsize);
 		}
 
 		/* Inicializo el filtro */
@@ -72,12 +73,6 @@ namespace MyCompanyName {
 	{
 		// Here the Plug-in will be de-instantiated, last possibility to remove some memory!
 
-		/*delete[] inputs_buff[0]; delete[] inputs_buff[1];
-		delete[] inputs_buff;
-
-		delete[] outputs_buff[0]; delete[] outputs_buff[1];
-		delete[] outputs_buff;
-		*/
 		//---do not forget to call parent ------
 		return AudioEffect::terminate();
 	}
@@ -88,7 +83,6 @@ namespace MyCompanyName {
 		//--- called when the Plug-in is enable/disable (On/Off) -----
 		return AudioEffect::setActive(state);
 
-		//Todo: borrar buffer de in y out
 	}
 
 	//Devuelve un sample random entre -1 y 1
@@ -161,30 +155,34 @@ namespace MyCompanyName {
 	//Acá hago lo de verdad interesante del plugin. Recibo audio y lo proceso
 	void filtros2Processor::processMio(int nsamps, int channel, Vst::Sample32* channin, Vst::Sample32* channout) {
 
-		/*debugCounter++;
-		if (debugCounter %  2 == 0) {
-			channin[0] = 1.;
-		}
-		*/
-
-
 
 		// load input samples en memoria
 		//No avanza los indices de sample actual (agrega "mas adelante")
+		//Es el input a la primer seccion del filtro (cascading_sections[0])
+		//Esto podria ser miembro de la clase filtro la verdad
 		inputs_buff[channel].copyfromIn(channin, nsamps); //Copio el bloque de entrada a mi buffer interno
 
 		//Proceso - Filtro n muestras
 		//Esto encola n nuevos samples filtrados en el outputbuffer, pero no avanza el indice actual (los agrega "mas adelante").
 		//Tampoco avanza el indice de lectura
-		filt.filter(inputs_buff[channel], outputs_buff[channel], nsamps);
+		//filt.filter(inputs_buff[channel], outputs_buff[channel], nsamps);
+
+		//Al hacer filtro en cascada, leo directamente el output de la ultima seccion del filtro
+		filt.filter(inputs_buff[channel], nsamps, channel);
 
 		//Copio el out calculado al bloque de salida
 		//Luego de esto sí avanzo los indices de los dos buffers
-		outputs_buff[channel].copytoOut(channout, nsamps);
+		//outputs_buff[channel].copytoOut(channout, nsamps);
+		filt.output(channel).copytoOut(channout, nsamps);
 
-		outputs_buff[channel].advance(nsamps);
+		//Copiar todos los samples que me pide de una me obliga a guardar mucha mas memoria que la que necesito (tanta como los samples que me va a pedir * cantidad de canales * cantidad de secciones * orden de cada seccion
+		//Si en cambio sé que todas mis secciones salvo la primera van a ser de orden 2, puedo reservar solo 3 samples de memoria en cada seccion por canal y calcular sample a sample
+		//Mas lento (sin tener en cuenta temas de cache y eso) pero más efectivo en memoria
+
+
+		//outputs_buff[channel].advance(nsamps);
 		inputs_buff[channel].advance(nsamps);
-
+		filt.output(channel).advance(nsamps);
 	}
 
 	//Pone en 0 todos los buses desde from hasta to

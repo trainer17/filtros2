@@ -7,9 +7,10 @@ class circularBuffer {
 
 public:
 	circularBuffer() : bufsize(0), i(-1) {};
-	circularBuffer(int bufsize);
+	circularBuffer(int bufsize) : bufsize(bufsize), buf(bufsize), i(0) {};
 	~circularBuffer();
 	void copytoOut(float* to, int nsamps);
+	void copytoOut(circularBuffer<Sample>& to, int nsamps);
 	void copyfromIn(float* from, int nsamps);
 	void copyfromIn(circularBuffer<Sample>& from, int nsamps);
 
@@ -26,14 +27,6 @@ public:
 	Sample& next(); //devuelve el ultimo sample y avanza i en uno
 
 };
-
-
-template<typename Sample>
-circularBuffer<Sample>::circularBuffer(int bufsize) {
-	this->bufsize = bufsize;
-	buf = std::vector<Sample>(bufsize);
-	i = 0; //indice actual
-}
 
 template<typename Sample>
 circularBuffer<Sample>::~circularBuffer() {
@@ -94,6 +87,19 @@ void circularBuffer<Sample>::copytoOut(float* to, int nsamps) {
 	rewind(nsamps);
 	return;
 }
+
+template<typename Sample>
+void circularBuffer<Sample>::copytoOut(circularBuffer<Sample>& to, int nsamps) {
+	int ns = nsamps;
+	while (--ns >= 0) {
+		to.next() = (*this).next();
+	}
+
+	rewind(nsamps);
+	to.rewind(nsamps);
+	return;
+}
+
 
 template<typename Sample>
 void circularBuffer<Sample>::copyfromIn(float* from, int nsamps) {

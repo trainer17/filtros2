@@ -4,7 +4,6 @@
 
 #pragma once
 
-typedef float* ssignal;
 #include <vector>
 #include "processor.h"
 #include "cids.h"
@@ -20,23 +19,45 @@ typedef float* ssignal;
 
 
 // Nth-order cascading section. Tipicamente va a ser de orden dos, pero puede ser mayor
+//El circularbuffer guarda el output de la seccion, para poder usar los samples recursivos
 template<typename Sample>
 struct Cascade_section {
 	std::vector<Sample> as;
 	std::vector<Sample> bs;
+	std::vector<circularBuffer<Sample> > internalStates; //un circularBuffer por cada canal
+
+	Cascade_section() : as(1), bs(1), internalStates(2) {};
+	Cascade_section(int nChannels, int bufsizes) : as(1), bs(1), internalStates(nChannels, bufsizes) {};
+
+	void filter(circularBuffer<Sample>& in, int nsamps, int channel); //filtra esta señal y guarda el output en el internalStatae
+
 };
 
+template<typename Sample>
+std::vector<Cascade_section<Sample>> make_cascading_sections(int count, int nChannels, int bufsizes) {
+	std::vector<Cascade_section<Sample>> result;
+	result.reserve(count);
+	for (int i = 0; i < count; ++i)
+		result.emplace_back(nChannels, bufsizes);
+	return result;
+}
 
 template<typename Sample>
 class Filtro {
 
 public:
 	
-	void filter(circularBuffer<Sample>& in, circularBuffer<Sample>& out, int nsamps);
+	//void filter(circularBuffer<Sample>& in, circularBuffer<Sample>& out, int nsamps); viejo, cuando no habia secciones en cascada
+	void filter(circularBuffer<Sample>& in, int nsamps, int channel); //guarda en el estado del ultimo filtro
 
 	void calcularCoeffs(int tipoId, float fc, float sr, float bw, int orden, float Gain); //Le paso todo lo posible y despues segun el tipo veo que necesito usar
+	circularBuffer<Sample>& output(int channel);
+	
+	Filtro(int ordenMax, int nChannels);
 
-	Filtro();
+	int nChanns; //cantidad de canales que procesa
+	int bufsizes; //tamaño del buffer de cada canal. En general es cascading_sections[0].internalStates[0].size();
+	int nCascades = 1; // La cantidad de secciones activas. Al crear el filtro, creo la maxima cantidad posible que puedo llegar a usar. Pero luego este parametro indica hasta qué indice están activas (ej: 1, indica solo hasta el indice 0)
 
 private:
 
@@ -46,19 +67,23 @@ private:
 
 
 	//Referencia a los coefs de la PRIMER SECCION del filtro. Usado por conveniencia, porque todos los filtros de orden bajo solo usan una seccion
-	
-
 	std::vector<Sample>& as;
 	std::vector<Sample>& bs;
+	
 
-	Sample gain; //factor de gain que se le aplica al yn.
+	//std::vector<Sample>& as() { return cascading_sections[0].as; };
+	//std::vector<Sample>& bs() { return cascading_sections[0].bs; };
+	//Sample& as(int k) { return as()[k]; };
+	//Sample& bs(int k) { return bs()[k]; };
+
+	//Sample gain; //factor de gain que se le aplica al yn.
 				// Lo uso cuando todos los coeficientes salvo el de yn llevan un mismo factor, que lo paso al otro lado de la ec. 
 				// H(z) =  G ( b0 + b1z-1 +..) / 1 + G a1 z-1 + G a2 z-2 ...
 	             // Multiplico por G a yn al final de todo
 				//TODO: No lo estoy haciendo aun. Pero en Butterworth y otros filtros podria. Si mejorara la precisión numérica
 
 	//Le paso los coeficientes y filtra
-	void filterSection(circularBuffer<Sample>& in, circularBuffer<Sample>& out, int nsamps, int section); // Secciones del filtro
+	//void filterSection(circularBuffer<Sample>& in, circularBuffer<Sample>& out, int nsamps, int section); // Secciones del filtro
 
 	void calcularCoeffsLP(float w, float Gain);
 	void calcularCoeffsHP(float w, float Gain);
@@ -70,64 +95,109 @@ private:
 
 	void calcularCoeffsButterworth(float w, int orden, float G, float Gcut = 1/std::sqrt(2));
 
+	static constexpr int maxCascadeSections = 200; //Absolutamente necesario que sea static constexpr si quiero inicializar el filtro como lo hice, con lista de inicializacio, 200 secciones de una, as y bs referencias a la primer seccion... complicado de gusto, para mayor legibilidad, supuestamente...
 };
 
 
 //Todo : El filtro deberia tener tantas copias del input buffer como secciones en la cascada
 // Esto es para poder preservar el estado inicial/anterior en cada seccion (los primeros y-1, y-2, y-3... y-orden, que en el metodo de "usar un solo buffer e ir copiando a la salida" no anda
 template<typename Sample>
-Filtro<Sample>::Filtro() :
-	cascading_sections(1),
-	as(cascading_sections[0].as),
-	bs(cascading_sections[0].bs)
-	{
-		as.resize(2);
-		bs.resize(2);
-		bs[0] = 1.;
+Filtro<Sample>::Filtro(int bufsize, int nChannels) :
 
-		return;
-	}
+	//cascading_sections(1, nChannels, ordenMax + 1),
+	//cascading_sections(ordenMax),//Maxima cantidad de secciones que puedo llegar a tener, todas de orden 1 (re extremo esto)
+	//cascading_sections{ Cascade_section<Sample>(nChannels, bufsize) }, //lo que me costó dar con esta linea... Basicamente, creo la primer seccion del filtros
+	//cascading_sections(std::vector<Cascade_section<Sample>>(200, Cascade_section<Sample>(nChannels, bufsize))),
+
+	//Creo las 200 secciones (maximas) que voy a poder tener acá con un lambda
+	cascading_sections(make_cascading_sections<Sample>(maxCascadeSections, nChannels, bufsize)),
+
+	//(cascading_sections[0])(nChannels, ordenMax + 1), //Creo la primer seccion
+	as(cascading_sections[0].as), //Referencia a los coefs de la primer seccion
+	bs(cascading_sections[0].bs),
+	bufsizes(bufsize),
+	nChanns(nChannels)
+
+{
+
+	//Primer seccion: la que arranca activa
+	as.resize(2);
+	bs.resize(2);
+	bs[0] = 1.;
+
+	//Creo las secciones siguientes. Quedan inactivas hasta que un filtro las llene.
+	//cascading_sections.resize(200); //maxima cantidad de cascadas que voy a admitir. TODO: sincronizar con lo otro
+	nCascades = 1;
+	//for (int i = 1; i < cascading_sections.size(); i++) {
+		//cascading_sections[i] = Cascade_section<Sample>(nChannels, bufsizes);
+//	}
+
+	//cascading_sections.reserve(ordenMax); //la maxima cantidad de secciones que voy a tener (todas de orden 1)
+
+}
 
 //Puedo tener una sola seccion, pero para generalizar lo pongo asi
+//VIEJO DESDE QUE USO CASCADAS
+/*
 template<typename Sample>
 void Filtro<Sample>::filter(circularBuffer<Sample>& in, circularBuffer<Sample>& out, int nsamps) {
 
-	filterSection(in, out, nsamps, 0); //Primer seccion (seccion 0)
+
+	cascading_sections[0].filter(in, nsamps); //Primer seccion (seccion 0)
 
 	//Secciones 1 en adelante si hay. Necesitan mirar el output de la seccion anterior, por eso el primero lo hago aislado
 	for (int section = 1; section < cascading_sections.size(); section++) {
-
-		.
-		in.copyfromIn(out, nsamps); //la salida del anterior es la entrada del siguiente filtro
-		filterSection(in, out, nsamps, section);
-	
+		cascading_sections[section].filter(cascading_sections[section - 1].internalState, nsamps);
 	}
+
+	//Copio la salida del ultimo filtro al out
+	cascading_sections[cascading_sections.size() - 1].internalState.copytoOut(out, nsamps); //Esto puedo repensarlo, para no estar copiando tres veces lo mismo en caso de que el filtro no haga nada}
+	// (si el filtro no hace nada, tengo input--> circular input --> circularouput --> output  (tres copias en vez de una)
+
+	return;
+}
+*/
+
+// Me ahorro acá una de las copias al outputinterno (que quedó descartado al implementar cascadas)
+
+template<typename Sample>
+void Filtro<Sample>::filter(circularBuffer<Sample>& in, int nsamps, int channel) {
+
+
+	cascading_sections[0].filter(in, nsamps, channel); //Primer seccion (seccion 0)
+
+	for (int section = 1; section < nCascades; section++) {
+
+		cascading_sections[section].filter(cascading_sections[section - 1].internalStates[channel], nsamps, channel);
+		
+		cascading_sections[section-1].internalStates[channel].advance(nsamps); //indico que ya usé esto y lo puedo avanzar
+	}
+
+	//cascading_sections[nCascades - 1].internalStates[channel].advance(nsamps); //indico que ya usé esto y lo puedo avanzar
+
+
 	return;
 }
 
 
 //Hago convolucion por definición usando los as y bs, sin FFT, porque asumo pocos coeficientes
 //Meto nsamps filtrados en out[i; i+nsamps) , tomando a partir de in[i:]
-
-//Filtro una seccion de la cascada
 template<typename Sample>
-void Filtro<Sample>::filterSection(circularBuffer<Sample>& in, circularBuffer<Sample>& out, int nsamps, int section) {
+void Cascade_section<Sample>::filter(circularBuffer<Sample>& in, int nsamps, int channel) {
 
-	std::vector<Sample>& ass = cascading_sections[section].as;
-	std::vector<Sample>& bss = cascading_sections[section].bs;
-
+	circularBuffer<Sample>& out = internalStates[channel];
 
 	int ns = nsamps; //copia
 
 	while (--ns >= 0) {
 
 		Sample yn = 0.;
-		for (int k = 0; k < bss.size(); k++) {
-			yn += in[-k] * bss[k];  //xk
+		for (int k = 0; k < bs.size(); k++) {
+			yn += in[-k] * bs[k];  //xk
 		}
 
-		for (int k = 1; k < ass.size(); k++) {
-			yn -= out[-k] * ass[k]; //a0 es forzado a 1. Notar el signo menos
+		for (int k = 1; k < as.size(); k++) {
+			yn -= out[-k] * as[k]; //a0 es forzado a 1. Notar el signo menos
 		}
 
 		out.next() = yn;
@@ -138,8 +208,15 @@ void Filtro<Sample>::filterSection(circularBuffer<Sample>& in, circularBuffer<Sa
 	//rebobino para que el indice actual del buffer siga siendo el mismo que cuando llamaste
 	out.rewind(nsamps);
 	in.rewind(nsamps);
-
 }
+
+
+
+template<typename Sample>
+circularBuffer<Sample>& Filtro<Sample>::output(int channel) {
+	return cascading_sections[nCascades-1].internalStates[channel];
+}
+
 
 
 template<typename Sample>
@@ -149,6 +226,7 @@ void Filtro<Sample>::calcularCoeffs(int tipoId, float fc, float sr, float bw, in
 	Sample w = 2 * M_PI * fc / sr; //Hz a radianes
 	bw = 2 * M_PI * bw / sr; //paso Hz a radianes
 
+	nCascades = 1; //salvo que Butterworth u otro de orden alto lo cambie
 
 	switch (tipoId)
 	{
@@ -211,10 +289,12 @@ void Filtro<Sample>::calcularCoeffs(int tipoId, float fc, float sr, float bw, in
 template<typename Sample>
 void Filtro<Sample>::calcularCoeffsLP(float w, float Gc) {
 
+
+
+	if (Gc >= 1.) Gc = 0.999;
+
 	as.resize(2);
 	bs.resize(2);
-
-	if (Gc >= 1.)  return; //filtroBypass(2);
 
 	Sample alpha = Gc / std::sqrt(1 - Gc * Gc) * std::tan(w/2);
 	
@@ -228,10 +308,10 @@ void Filtro<Sample>::calcularCoeffsLP(float w, float Gc) {
 template<typename Sample>
 void Filtro<Sample>::calcularCoeffsHP(float w, float Gc) {
 
+	if (Gc >= 1.)  Gc = 0.999; //return; //Habria que poner un limite de rango al control en este tipo de filtro. pero wenn
+
 	as.resize(2);
 	bs.resize(2);
-
-	if (Gc >= 1.)  return; //Habria que poner un limite de rango al control en este tipo de filtro. pero wenn
 
 	Sample alpha =  std::sqrt(1 - Gc * Gc) /Gc * std::tan(w / 2);
 
@@ -358,7 +438,7 @@ void Filtro<Sample>::calcularCoeffsShelve2(float w, float G, bool lowshelf) {
 
 	float G0 = 1.; //Acá no veo la necesidad de que sea un parámetro
 
-	float G02 = 1.; //G0 al cuadrado
+	//float G02 = 1.; //G0 al cuadrado
 	//float Gc2 = cutoff_freq_Gain(G*G, G02); //Este es el gain en la frecuencia de corte. Es parametrizable, daria mas libertad elegirlo por el usuario, pero tipicamente se elige como un valor no controlable
 
 	//float beta = std::sqrt((Gc2 - G02) / (G * G - Gc2));  ///CUIDADO: CASOS BORDE. DIvision por cero
@@ -399,12 +479,13 @@ void Filtro<Sample>::calcularCoeffsButterworth(float w, int orden, float G, floa
 	int orden = 6;
 	*/
 
-	Sample W0 = 2*w; //En realidad es otro ratio, pero no lo construyo con esos parámetros
+	Sample W0 = w/2.; //En realidad es otro ratio, pero no lo construyo con esos parámetros
 	Sample W02 = W0 * W0;
 
 	int K = orden / 2; // la cantidad de secciones de orden 2.
 
-	cascading_sections.resize(K);
+	//cascading_sections.resize(K);
+	nCascades = K;
 	
 	for (int i = 0; i < K; i++)
 	{
@@ -431,7 +512,8 @@ void Filtro<Sample>::calcularCoeffsButterworth(float w, int orden, float G, floa
 	//Falta una seccion de orden uno
 	if (orden % 2 == 1) {
 
-		cascading_sections.resize(K + 1);
+		//cascading_sections.resize(K + 1);
+		nCascades = K + 1;
 
 		cascading_sections[K].as.resize(2);
 		cascading_sections[K].bs.resize(2);

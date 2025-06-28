@@ -70,8 +70,12 @@ protected:
 	//Parametros fijos de implementacion
 	const int n_channs = 2; //Plugin stereo
 	const int ordenMax = 250; //Maximo orden para los filtros . Si cambio aca, tengo que cambiar el controller .cpp tambien, donde agrego este parametro
-	const int bufsize = 4096; //tamaño de los buffers internos para procesar el audio. Solo necesito "ordenMax", pero como el Daw me puede pedir con bloques de esa cantidad de samples...
-
+	const int bufsize = 4096; //tamaño de los buffers internos para procesar el audio. Solo necesito "ordenMax", pero como el Daw me puede pedir con bloques de esa cantidad de samples... los hago asi
+							 //En memoria voy a guardar  255* 2 * 4096 samples aprox ( cantidad max de secciones * cantidad de canales * tamaño de buffer de cada canal)
+							//Este approach, mucho más preciso, también más costoso en memoria...
+							//La otra manera sería ir escribiendo al output a medida que calculo los samples (ej: orden 2, no necesito buffers de 4000 samples. Con memoizar los dos ultimos me alcanza.
+							//Pero el daw me pide de a 4096... lo hago asi por simplicidad y listo. Calculo todos y le entrego todos, a mas coste de memoria
+							//OJO: TODO IMPORTANTE: Si el daw me llega a pedir mas de esta cantidad de samples en un bloque, fui. Tendria que agrandar esto o replantear el procesado para que sea sample a sample
 	
 	//Parametros variables.
 	//todo no arrancan con los valores de los sliders, sino los que defino acá
@@ -90,7 +94,7 @@ protected:
 	//Miembros necesarios para la implementacion
 	Filtro<float> filt;
 	std::vector<circularBuffer<float> > inputs_buff;  //meimoizacion de la entrada en cada canal
-	std::vector<circularBuffer<float> > outputs_buff;
+	//std::vector<circularBuffer<float> > outputs_buff; //Redundante desde que implementé estados internos en los filtros; a menos que quiera hacer algun tipo de proceso stereo
 	
 	int debugCounter = 0;
 
